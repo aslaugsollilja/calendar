@@ -1,2 +1,1 @@
-# calendar
-Calendar assignment
+# Calendar App

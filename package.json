@@ -1,5 +1,5 @@
 {
-  "name": "webpack-basic",
+  "name": "calendar",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,13 +11,20 @@
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.5.2",
+    "bootstrap": "^3.3.6",
+    "bootstrap-webpack": "0.0.5",
+    "jquery": "^2.2.1",
     "less": "^2.6.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.3",
     "css-loader": "^0.23.1",
+    "exports-loader": "^0.6.3",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "imports-loader": "^0.6.5",
     "less-loader": "^2.2.2",
+    "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"

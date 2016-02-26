@@ -1,10 +1,9 @@
 <style>
 
     .header{
-        width: 912px;
+        width: 910px;
         height: 100px;
         margin: auto;
-        /*margin-left: 114px;*/
     }
 
     .subHeading{
@@ -18,26 +17,28 @@
 
     #leftArrow{
         text-align:left;
+        cursor: pointer;
     }
 
     #rightArrow{
         text-align:right;
+        cursor: pointer;
     }
 
     .calendar{
         margin: auto;
-        border-style: solid;
-        border-width: 1px;
-        width: 912px;
-        /*height: 600px;*/
-        padding-left: 0px;
-        padding-bottom: 19px;
+        width: 910px;
+        height: 640px;
     }
 
-    .weekHeader{
-        width: 912px;
+    .calendarHeader{
+        width: 910px;
         height: 38px;
         margin-bottom: -20px;
+    }
+
+    .calendarBody{
+        margin-top: 2px;
     }
 
     .weekDayName{
@@ -55,20 +56,20 @@
     }
 
     .calendarDate{
-        /*margin: 10px;*/
         float:left;
         border-style: solid;
         border-width: 1px;
-        width: 130px;
-        height: 120px;
+        height: 100px;
+        width: 14.2857143%;
+        cursor: pointer;
     }
     .calendarWeek{
-        width: 912px;
-        height: 100px;
+        width: 100%;
+        height: 80px;
     }
 
     .thisIsToday{
-        background-color: #00b3ee;
+        background-color: #e5e5ff ;
     }
 
 </style>
@@ -79,13 +80,14 @@
         <div class="subHeading"><h1 id="rightArrow"> > </h1></div>
     </div>
     <div class="calendar">
-        <div class="weekHeader">
+        <div class="calendarHeader">
             {{#each weekdays as |weekday|}}
                 <div class="weekDayName">
                     <h5 class="mainName">{{weekday}}</h5>
                 </div>
             {{/each}}
         </div>
+        <div class="calendarBody">
         {{#each weekList as |list|}}
             <br>
                 <div class="calendarWeek">
@@ -102,5 +104,6 @@
                     {{/each}}
                 </div>
         {{/each}}
+        </div>
     </div>
 </div>

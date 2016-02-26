@@ -1,19 +1,28 @@
 //require('./day');
 require('bootstrap-webpack');
+var director = require('director');
 var moment = require('moment');
 var calendarTemplate = require('calendar.handlebars');
-//var eventsTemplate = require('dayEvents.handlebars');
-//var newEventTemplate = require('newEvent.handlebars');
+var eventsTemplate = require('dayEvents.handlebars');
+var newEventTemplate = require('newEvent.handlebars');
 console.log("goodbye");
 
+var $mainContainer = $("#mainContainer");
+
 var currentMonth = moment();
+
+var routes = {
+	'/' : function(){ $mainContainer.html(calendarTemplate)},
+	'/day' : function() { $mainContainer.html(newEventTemplate)},
+	'/new' : function() { $mainContainer.html(eventsTemplate)}
+	};
+
+var router = director.Router(routes);
+router.init();
 
 function getWeekList(date){
 	var startDate = moment(date).startOf('month').startOf('week');
 	var endDate = moment(date).startOf('month').startOf('week').add(6, 'weeks');
-
-	console.log("This is start date: ", startDate.toDate());
-	console.log("This is end date: ", endDate.toDate());
 
 	var weekList = [];
 	var dayList = [];
@@ -40,7 +49,7 @@ function getWeekList(date){
 
 function render(weekList, curMonth){
 	var calendarHeading = moment(curMonth).format('MMMM YYYY');
-	$("#calendarContainer").html(calendarTemplate({weekList: weekList, weekdays: [
+	$mainContainer.html(calendarTemplate({weekList: weekList, weekdays: [
 		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], monthAndYear: calendarHeading
 	}));
 	addEventHandlers();
@@ -52,14 +61,19 @@ render(weekList, currentMonth);
 
 function addEventHandlers(){
 
+	// When user hovers over date it changes color
+	// Today is marked with a different color and will return to that color when not hovered
 	$(".calendarDate").hover(function(){
-		$(this).css("background-color", "grey");
+		$(this).css("background-color", "#d7d7d7");
 	}, function(){
+		if($(this).hasClass("thisIsToday")){
+			$(this).css("background-color", "#e5e5ff");
+		}else{
 			$(this).css("background-color", "white");
 		}
-	);
+		});
 
-
+	// When user clicks right arrow he gets next month and the dates updates
 	$("#rightArrow").click(function(){
 		var addMonth = currentMonth.add(1, 'month');
 		var weekList = getWeekList(addMonth);
@@ -67,12 +81,17 @@ function addEventHandlers(){
 
 	});
 
+	// When user clicks left arrow he gets previous month and the dates updates
 	$("#leftArrow").click(function(){
 		var subMonth = currentMonth.subtract(1, 'month');
 		var weekList = getWeekList(subMonth);
 		render(weekList, subMonth);
 
 	});
+
+	$(".calendarDate").click(function(){
+		window.location.href = "/#/day";
+	})
 }
 
 

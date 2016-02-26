@@ -68,8 +68,6 @@ class calendar {
 		this.addEventHandlers();
 	}
 
-
-
 	addEventHandlers() {
 
 		// When user hovers over date it changes color

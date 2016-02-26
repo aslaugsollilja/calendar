@@ -1,6 +1,6 @@
 'use strict';
 var Calendar = require('./calendar');
-
+var Day = require("./day");
 var director = require('director');;
 var calendarTemplate = require('calendar.handlebars');
 var eventsTemplate = require('dayEvents.handlebars');
@@ -10,8 +10,8 @@ var myService = require('./serviceInstance');
 var $mainContainer = $("#mainContainer");
 
 var routes = {
-	'/' : function(){ $mainContainer.html(calendarTemplate)},
-	'/events' : function() { $mainContainer.html(eventsTemplate)}
+	'/' : function(){ new Calendar() },
+	'/events' : function() { new Day() }
 };
 
 var router = director.Router(routes);

@@ -4,30 +4,74 @@ var moment = require('moment');
 var calendarTemplate = require('calendar.handlebars');
 console.log("goodbye");
 
-
-var startDate = moment().startOf('month').startOf('week').subtract(1, 'days');
-var endDate = moment().startOf('month').startOf('week').add(6, 'weeks');
+var currentMonth = moment();
 
 
-console.log(startDate.toDate());
-console.log(endDate.toDate());
-//console.log(firstDay);
-//console.log(lastDay);
+function getWeekList(date){
+	var startDate = moment(date).startOf('month').startOf('week');
+	var endDate = moment(date).startOf('month').startOf('week').add(6, 'weeks');
 
-var weekList = [];
-var dayList = [];
+	console.log("This is start date: ", startDate.toDate());
+	console.log("This is end date: ", endDate.toDate());
 
-while(!(startDate.isSame(endDate))){
-	//console.log(startDate);
-	var dateObject = {};
-	dateObject.dateNr = startDate.date();
-	dateObject.date = startDate.format('DD/MM/YY');
-	dayList.push(dateObject);
-	if(dayList.length == 6){
-		weekList.push(dayList);
-	}
-	startDate.add(1, 'days');
-};
-console.log(weekList);
+	var weekList = [];
+	var dayList = [];
 
-$("#calendarContainer").html(calendarTemplate({dayList: dayList}));
+	var today = moment().startOf('day');
+
+	while(!(startDate.isSame(endDate))){
+		//console.log(startDate);
+		var dateObject = {};
+		dateObject.dateNr = startDate.date();
+		dateObject.date = startDate.format('DD/MM/YY');
+		if(startDate.isSame(today)){
+			dateObject.today = true;
+		}
+		dayList.push(dateObject);
+		if(dayList.length == 7){
+			weekList.push(dayList);
+			dayList = [];
+		}
+		startDate.add(1, 'days');
+	};
+	return weekList;
+}
+
+function render(weekList, curMonth){
+	var calendarHeading = moment(curMonth).format('MMMM YYYY');
+	$("#calendarContainer").html(calendarTemplate({weekList: weekList, weekdays: [
+		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], monthAndYear: calendarHeading
+	}));
+	addEventHandlers();
+}
+
+var weekList = getWeekList(currentMonth);
+
+render(weekList, currentMonth);
+
+function addEventHandlers(){
+
+	$(".calendarDate").hover(function(){
+		$(this).css("background-color", "grey");
+	}, function(){
+		$(this).css("background-color", "white");
+	});
+
+
+	$("#rightArrow").click(function(){
+		var addMonth = currentMonth.add(1, 'month');
+		var weekList = getWeekList(addMonth);
+		render(weekList, addMonth);
+
+	});
+
+	$("#leftArrow").click(function(){
+		var subMonth = currentMonth.subtract(1, 'month');
+		var weekList = getWeekList(subMonth);
+		render(weekList, subMonth);
+
+	});
+}
+
+
+

@@ -1,17 +1,99 @@
 <style>
-    .dateNr{
-        margin: 10px;
+
+    .header{
+        width: 912px;
+        height: 100px;
+        margin: auto;
+        /*margin-left: 114px;*/
+    }
+
+    .subHeading{
         float:left;
-        display: table;
+        width: 33%;
+        /*margin-left: 210px;*/
+    }
+    #monthAndYear{
+        text-align:center;
+    }
+
+    #leftArrow{
+        text-align:left;
+    }
+
+    #rightArrow{
+        text-align:right;
+    }
+
+    .calendar{
+        margin: auto;
+        border-style: solid;
+        border-width: 1px;
+        width: 912px;
+        /*height: 600px;*/
+        padding-left: 0px;
+        padding-bottom: 19px;
+    }
+
+    .weekHeader{
+        width: 912px;
+        height: 38px;
+        margin-bottom: -20px;
+    }
+
+    .weekDayName{
+        float:left;
+        width: 14.2%;
+        height: 38px;
+    }
+
+    .mainName{
+        text-align:center;
+    }
+
+    p{
+        margin-left: 7px;
+    }
+
+    .calendarDate{
+        /*margin: 10px;*/
+        float:left;
+        border-style: solid;
+        border-width: 1px;
+        width: 130px;
+        height: 120px;
+    }
+    .calendarWeek{
+        width: 912px;
+        height: 100px;
     }
 
 </style>
-
-<h1> Friggi </h1>
 <div>
-    {{#each dayList}}
-        <div class="dateNr">
-            {{dateNr}}
+    <div class="header">
+        <div class="subHeading"><h1 id="leftArrow"> < </h1></div>
+        <div class="subHeading"><h1 id="monthAndYear"> {{monthAndYear}} </h1></div>
+        <div class="subHeading"><h1 id="rightArrow"> > </h1></div>
+    </div>
+    <div class="calendar">
+        <div class="weekHeader">
+            {{#each weekdays as |weekday|}}
+                <div class="weekDayName">
+                    <h5 class="mainName">{{weekday}}</h5>
+                </div>
+            {{/each}}
         </div>
-    {{/each}}
+        {{#each weekList as |list|}}
+            <br>
+                <div class="calendarWeek">
+                    {{#each list}}
+                      <div class="calendarDate">
+                          {{#if today}}
+                              <div class="thisIsToday"></div>
+                          {{/if}}
+                          <p class="calNr"> {{dateNr}} </p>
+                      </div>
+                    {{/each}}
+                </div>
+        {{/each}}
+    </div>
 </div>

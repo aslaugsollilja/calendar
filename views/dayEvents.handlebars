@@ -1,15 +1,15 @@
 
-
 <div class="container">
     <div class="eventPanel">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">New event</button>
-        <!-- Trigger the modal with a button -->
+        <div class="panelHeading">
+            <h1> Dagsetning </h1>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">New event</button>
+        </div>
+
         <div class="panel panel-default allEvents">
             <ul class="list-group">
-                <li class="list-group-item"> This is an event
-
-                </li>
-
+                <!--<li class="list-group-item"> </li>-->
             </ul>
         </div>
     </div>
@@ -63,7 +63,7 @@
 
                     <div class="form-group">
                         <button class="btn btn-info" type="submit"> Create New Event </button>
-                        <button class="btn btn-warning" type="submit"> Cancel </button>
+                        <button type="button" class=" btn btn-warning" data-dismiss="modal" aria-hidden="true" data-target="/#/events"> Cancel </button>
                     </div>
 
                 </form>

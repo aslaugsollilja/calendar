@@ -67,6 +67,10 @@
         height: 100px;
     }
 
+    .thisIsToday{
+        background-color: #00b3ee;
+    }
+
 </style>
 <div>
     <div class="header">
@@ -86,12 +90,15 @@
             <br>
                 <div class="calendarWeek">
                     {{#each list}}
-                      <div class="calendarDate">
-                          {{#if today}}
-                              <div class="thisIsToday"></div>
-                          {{/if}}
-                          <p class="calNr"> {{dateNr}} </p>
-                      </div>
+                        {{#if today}}
+                            <div class="calendarDate thisIsToday">
+                                <p class="calNr"> {{dateNr}} </p>
+                            </div>
+                        {{else}}
+                            <div class="calendarDate">
+                                  <p class="calNr"> {{dateNr}} </p>
+                              </div>
+                        {{/if}}
                     {{/each}}
                 </div>
         {{/each}}

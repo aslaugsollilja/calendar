@@ -1,0 +1,55 @@
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="/#/">x</a></button>
+                <h1 class="text-center"> New Event </h1>
+                <small class="text-muted">  Creating a new event on {{ }} </small>
+            </div>
+
+            <div class="modal-body">
+
+                <form class="form col-md-12 center-block" name="SignInForm" action="/auth/login" method="post">
+
+                    <div class="form-group">
+                        <h5>Event Title</h5>
+                        <input name="userName" id="userName" type="text" class="form-control input-lg" placeholder="Enter Title" required>
+                    </div>
+                    <div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Meeting
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>
+                                Appointment
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" checked>
+                                Task
+                            </label>
+                        </div>
+                    </div>
+
+                    <fieldset class="form-group">
+                        <label for="notesArea"> Notes </label>
+                        <textarea class="form-control" id="notesArea" placeholder="Enter notes" rows="3"></textarea>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit"> Create New Event </button>
+                        <span><a href="#">Cancel</a></span>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

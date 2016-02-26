@@ -2,10 +2,11 @@
 require('bootstrap-webpack');
 var moment = require('moment');
 var calendarTemplate = require('calendar.handlebars');
+//var eventsTemplate = require('dayEvents.handlebars');
+//var newEventTemplate = require('newEvent.handlebars');
 console.log("goodbye");
 
 var currentMonth = moment();
-
 
 function getWeekList(date){
 	var startDate = moment(date).startOf('month').startOf('week');
@@ -54,8 +55,9 @@ function addEventHandlers(){
 	$(".calendarDate").hover(function(){
 		$(this).css("background-color", "grey");
 	}, function(){
-		$(this).css("background-color", "white");
-	});
+			$(this).css("background-color", "white");
+		}
+	);
 
 
 	$("#rightArrow").click(function(){

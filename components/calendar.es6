@@ -3,14 +3,10 @@ require('bootstrap-webpack');
 require('style.css');
 var moment = require('moment');
 var calendarTemplate = require('calendar.handlebars');
-var myService = require('./serviceInstance');
+var myService = require('../services/serviceInstance');
 
-
-myService.saveEvent({date: "20/02/16", name: "My birthday"});
-setTimeout(function(){
-	console.log(myService.getEvents());
-}, 10);
-
+// TODO: remove test
+//myService.saveEvent({date: "20/02/16", name: "My birthday"});
 
 var $mainContainer = $("#mainContainer");
 

@@ -3,11 +3,7 @@ require('bootstrap-webpack');
 require('style.css');
 var moment = require('moment');
 var eventsTemplate = require('dayEvents.handlebars');
-var myService = require('./serviceInstance');
-
-
-myService.saveEvent({date: "20/02/16", name: "My birthday"});
-
+var myService = require('../services/serviceInstance');
 
 var $mainContainer = $("#mainContainer");
 
@@ -30,9 +26,10 @@ class day {
 			var eventType = $('input[name=optionsRadios]:checked', '.js-eventType').val();
 			var notes = $('#notesArea').val();
 
-			var event = {date: "18/02/06", title: title, eventType: eventType, notes: notes};
-			console.log(event);
-			myService.saveEvent(event);
+			// TODO: finish what I started
+			//var event = {date: "18/02/06", title: title, eventType: eventType, notes: notes};
+			//console.log(event);
+			//myService.saveEvent(event);
 
 			// A poor solution
 			$(".modal-backdrop").remove();

@@ -1,10 +1,10 @@
 'use strict';
-var Calendar = require('./calendar');
-var Day = require("./day");
+var Calendar = require('./components/calendar');
+var Day = require("./components/day");
 var director = require('director');;
 var calendarTemplate = require('calendar.handlebars');
 var eventsTemplate = require('dayEvents.handlebars');
-var myService = require('./serviceInstance');
+var myService = require('./services/serviceInstance');
 
 
 var $mainContainer = $("#mainContainer");

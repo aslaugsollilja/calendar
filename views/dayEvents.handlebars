@@ -1,1 +1,93 @@
-<h1>Friggi </h1>
+<style>
+    .eventPanel{
+        margin: auto;
+        margin-top: 100px;
+        width: 800px;
+        padding: 100px;
+        border-style: outset;
+
+    }
+    .modal-content{
+        width: 500px;
+        height: 500px;
+        margin: auto;
+        margin-top: 80px;
+    }
+    .allEvents{
+        margin-top: 50px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="eventPanel">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">New event</button>
+        <!-- Trigger the modal with a button -->
+        <div class="panel panel-default allEvents">
+            <ul class="list-group">
+                <li class="list-group-item"> This is an event
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- NEW EVENT MODAL -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="/#/">x</a></button>
+                <h3 class="modal-title"> New Event </h3>
+                <h5 class="text-muted">  Creating a new event on </h5>
+            </div>
+
+            <div class="modal-body">
+
+                <form class="form col-md-12 center-block" name="SignInForm" action="/auth/login" method="post">
+
+                    <div class="form-group">
+                        <label>Event Title</label>
+                        <input id="eventTitle" type="text" class="form-control" placeholder="Enter Title" required>
+                    </div>
+
+                    <div class="radioButtons">
+                        <label>Event Type</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Meeting
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" checked>
+                                Appointment
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" checked>
+                                Task
+                            </label>
+                        </div>
+                    </div>
+
+                    <fieldset class="form-group">
+                        <label for="notesArea"> Notes </label>
+                        <textarea class="form-control" id="notesArea" placeholder="Enter notes" rows="3"></textarea>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <button class="btn btn-info" type="submit"> Create New Event </button>
+                        <button class="btn btn-warning" type="submit"> Cancel </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

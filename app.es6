@@ -13,8 +13,8 @@ var currentMonth = moment();
 
 var routes = {
 	'/' : function(){ $mainContainer.html(calendarTemplate)},
-	'/day' : function() { $mainContainer.html(newEventTemplate)},
-	'/new' : function() { $mainContainer.html(eventsTemplate)}
+	'/new' : function() { $mainContainer.html(newEventTemplate)},
+	'/events' : function() { $mainContainer.html(eventsTemplate)}
 	};
 
 var router = director.Router(routes);
@@ -90,7 +90,7 @@ function addEventHandlers(){
 	});
 
 	$(".calendarDate").click(function(){
-		window.location.href = "/#/day";
+		window.location.href = "/#/events";
 	})
 }
 

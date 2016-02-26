@@ -18,15 +18,11 @@
             <br>
                 <div class="calendarWeek">
                     {{#each list}}
-                        {{#if today}}
-                            <div class="calendarDate thisIsToday">
+                            <div class="calendarDate {{#if today}}thisIsToday{{/if}} js-calendarDate">
                                 <p class="calNr"> {{dateNr}} </p>
+                                {{#if nrOfEvents}}{{nrOfEvents}}{{/if}}
                             </div>
-                        {{else}}
-                            <div class="calendarDate">
-                                  <p class="calNr"> {{dateNr}} </p>
-                              </div>
-                        {{/if}}
+
                     {{/each}}
                 </div>
         {{/each}}

@@ -1,6 +1,7 @@
 
 <div class="container">
     <div class="eventPanel">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a href="/#/">x</a></button>
         <div class="panelHeading">
             <h1> Dagsetning </h1>
             <!-- Trigger the modal with a button -->
@@ -9,7 +10,6 @@
 
         <div class="panel panel-default allEvents">
             <ul class="list-group">
-                <!--<li class="list-group-item"> </li>-->
             </ul>
         </div>
     </div>
@@ -27,14 +27,14 @@
 
             <div class="modal-body">
 
-                <form class="form col-md-12 center-block" name="SignInForm" action="/auth/login" method="post">
+                <form class="form col-md-12 center-block">
 
                     <div class="form-group">
                         <label>Event Title</label>
                         <input id="eventTitle" type="text" class="form-control" placeholder="Enter Title" required>
                     </div>
 
-                    <div class="radioButtons">
+                    <div class="radioButtons js-eventType">
                         <label>Event Type</label>
                         <div class="radio">
                             <label>
@@ -61,8 +61,8 @@
                         <textarea class="form-control" id="notesArea" placeholder="Enter notes" rows="3"></textarea>
                     </fieldset>
 
-                    <div class="form-group">
-                        <button class="btn btn-info" type="submit"> Create New Event </button>
+                    <div >
+                        <button class="btn btn-info js-saveEvent" ><a href="/#/">Create New Event</a>  </button>
                         <button type="button" class=" btn btn-warning" data-dismiss="modal" aria-hidden="true" data-target="/#/events"> Cancel </button>
                     </div>
 

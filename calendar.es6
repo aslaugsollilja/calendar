@@ -11,7 +11,6 @@ setTimeout(function(){
 	console.log(myService.getEvents());
 }, 10);
 
-console.log("goodbye");
 
 var $mainContainer = $("#mainContainer");
 
@@ -19,9 +18,7 @@ var currentMonth = moment();
 
 class calendar {
 	constructor() {
-		var weekList = this.getWeekList(currentMonth);
-
-		this.render(weekList, currentMonth);
+		this.render(currentMonth);
 	}
 
 	getWeekList(date) {
@@ -34,16 +31,15 @@ class calendar {
 		var today = moment().startOf('day');
 
 		while (!(startDate.isSame(endDate))) {
-			//console.log(startDate);
 			var dateObject = {};
 			dateObject.dateNr = startDate.date();
 			dateObject.date = startDate.format('DD/MM/YY');
 			var events = myService.getEvent(dateObject.date);
 
 			if(events){
-				console.log(event);
+				dateObject.nrOfEvents = events.length;
+				dateObject.events = events;
 			}
-
 			if (startDate.isSame(today)) {
 				dateObject.today = true;
 			}
@@ -57,7 +53,9 @@ class calendar {
 		return weekList;
 	}
 
-	render(weekList, curMonth) {
+	render(curMonth) {
+		var weekList = this.getWeekList(currentMonth);
+
 		var calendarHeading = moment(curMonth).format('MMMM YYYY');
 		$mainContainer.html(calendarTemplate({
 			weekList: weekList,
@@ -72,7 +70,7 @@ class calendar {
 
 		// When user hovers over date it changes color
 		// Today is marked with a different color and will return to that color when not hovered
-		$(".calendarDate").hover(function () {
+		$(".js-calendarDate").hover(function () {
 			$(this).css("background-color", "#d7d7d7");
 		}, function () {
 			if ($(this).hasClass("thisIsToday")) {
@@ -85,16 +83,14 @@ class calendar {
 		// When user clicks right arrow he gets next month and the dates updates
 		$("#rightArrow").click(x => {
 			var addMonth = currentMonth.add(1, 'month');
-			var weekList = this.getWeekList(addMonth);
-			this.render(weekList, addMonth);
+			this.render(addMonth);
 
 		});
 
 		// When user clicks left arrow he gets previous month and the dates updates
 		$("#leftArrow").click(x => {
 			var subMonth = currentMonth.subtract(1, 'month');
-			var weekList = this.getWeekList(subMonth);
-			this.render(weekList, subMonth);
+			this.render(subMonth);
 
 		});
 

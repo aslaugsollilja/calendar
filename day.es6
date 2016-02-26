@@ -7,11 +7,7 @@ var myService = require('./serviceInstance');
 
 
 myService.saveEvent({date: "20/02/16", name: "My birthday"});
-setTimeout(function(){
-	console.log(myService.getEvents());
-}, 10);
 
-console.log("goodbye");
 
 var $mainContainer = $("#mainContainer");
 
@@ -24,12 +20,24 @@ class day {
 
 	render(weekList, curMonth) {
 
-		$mainContainer.html(eventsTemplate);
+		$mainContainer.html(eventsTemplate());
 		this.addEventHandlers();
 	}
 
 	addEventHandlers() {
+		$('.js-saveEvent').on('click', function(){
+			var title = $("#eventTitle").val();
+			var eventType = $('input[name=optionsRadios]:checked', '.js-eventType').val();
+			var notes = $('#notesArea').val();
 
+			var event = {date: "18/02/06", title: title, eventType: eventType, notes: notes};
+			console.log(event);
+			myService.saveEvent(event);
+
+			// A poor solution
+			$(".modal-backdrop").remove();
+
+		});
 
 	}
 

@@ -1,5 +1,6 @@
 'use strict';
 require('bootstrap-webpack');
+require('style.css');
 var moment = require('moment');
 var calendarTemplate = require('calendar.handlebars');
 var myService = require('./serviceInstance');

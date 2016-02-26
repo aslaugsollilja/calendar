@@ -39,7 +39,8 @@ module.exports = {
 		// you can now require('file') instead of require('file.es6')
 		extensions: ['', '.js', '.json', '.es6'],
 		root: [
-			path.resolve('./views')
+			path.resolve('./views'),
+			path.resolve('./styles')
 		]
 	}
 };

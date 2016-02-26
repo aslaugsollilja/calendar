@@ -1,5 +1,4 @@
-
-
+/****************************** CALENDAR VIEW ******************************/
 .header{
     width: 910px;
     height: 100px;
@@ -9,7 +8,6 @@
 .subHeading{
     float:left;
     width: 33%;
-    /*margin-left: 210px;*/
 }
 #monthAndYear{
     text-align:center;
@@ -72,6 +70,8 @@ p{
     background-color: #e5e5ff ;
 }
 
+
+/****************************** PANEL VIEW ******************************/
  .eventPanel{
      margin: auto;
      margin-top: 100px;

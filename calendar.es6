@@ -85,18 +85,18 @@ class calendar {
 		});
 
 		// When user clicks right arrow he gets next month and the dates updates
-		$("#rightArrow").click(function () {
+		$("#rightArrow").click(x => {
 			var addMonth = currentMonth.add(1, 'month');
 			var weekList = this.getWeekList(addMonth);
-			render(weekList, addMonth);
+			this.render(weekList, addMonth);
 
 		});
 
 		// When user clicks left arrow he gets previous month and the dates updates
-		$("#leftArrow").click(function () {
+		$("#leftArrow").click(x => {
 			var subMonth = currentMonth.subtract(1, 'month');
 			var weekList = this.getWeekList(subMonth);
-			render(weekList, subMonth);
+			this.render(weekList, subMonth);
 
 		});
 

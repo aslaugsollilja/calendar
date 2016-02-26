@@ -13,7 +13,6 @@
     "babel-core": "^6.5.2",
     "bootstrap": "^3.3.6",
     "bootstrap-webpack": "0.0.5",
-    "calendar": "^0.1.0",
     "director": "^1.2.8",
     "handlebars": "^4.0.5",
     "jquery": "^2.2.1",
